@@ -7,6 +7,7 @@ import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.MissingResourceException;
 
 /**
  * Unit test for i18N Manager
@@ -65,5 +66,18 @@ public class I18NmanagerTest
         Assert.assertEquals(4, setGerman.size());
         List<String> expectedGerman = Arrays.asList("Willkommen", "Konfiguration", "Speisekarte", "Sitzung schließen");
         Assert.assertEquals(expectedGerman, setGerman);
+    }
+
+    @Test
+    public void testGetWord() {
+        Assert.assertEquals("Benvingut",I18N_manager.getInstance().getWord("ca","L1"));
+        Assert.assertEquals("Benvingut",I18N_manager.getInstance().getWord("ca","L1"));
+    }
+
+
+    @Test
+    public void testGetWordWithLocaleNotFound() {
+        Assert.assertEquals("Welcome",I18N_manager.getInstance().getWord("ru","L1"));
+
     }
     }
